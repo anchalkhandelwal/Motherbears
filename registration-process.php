@@ -11,15 +11,39 @@ include('connection.php');
 	$pincode = isset($_POST['pin'])?$_POST['pin']:'';
 
 	if($pass != $newpass){
-		header("Location: register.php?error=Password%20Mismatch!");
+		header("Location: register.php?normalerror=Password%20Mismatch!");
 	}
 
-	$query = 'INSERT INTO "Users" VALUES('.$firstName.', '.$lastName.','.$email.', '.$phone.', '.$pass.', '.$address.')';
+	if(strlen($firstName)<3 || strlen($firstName)>50){
+		header("Location: register.php?normalerror=InValid%20First%20Name");
+	}
+
+	if(strlen($lastName)<3 || strlen($lastName)>50){
+		header("Location: register.php?normalerror=InValid%20Last%20Name");
+	}
+
+	if(strlen($address)<3 || strlen($address)>500){
+		header("Location: register.php?normalerror=InValid%20Address");
+	}
+
+	if(strlen($pincode)<3 || strlen($pincode)>50){
+		header("Location: register.php?normalerror=InValid%20Pincode");
+	}
+
+	$query = "INSERT INTO \"Users\"(first_name,last_name,email,phone,password,address) VALUES('{$firstName}', '{$lastName}','{$email}', '{$phone}', '{$pass}', '{$address}')";
 	// die($query);
 	$result = pg_query($conn, $query);
 
+	if(!$result){
+		die(pg_last_error());
+	}
+
 	if(!$result) {
-		echo "Could not fetch the current messages! Error: ".pg_last_error()."<br>";
+		$error_message = pg_last_error();
+		header("Location: register.php?qerror=Insert%20Error");
+	}
+	else {
+		header("Location: register.php?success=success");
 	}
 
 ?>

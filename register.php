@@ -1,5 +1,11 @@
 <?php 
-$pwd_error = isset($_GET['error'])?$_GET['error']:'';
+session_start();
+if(isset($_SESSION["first_name"])) {
+    header("Location: index.php");
+}
+$error = isset($_GET['normalerror'])?$_GET['normalerror']:'';
+$success = isset($_GET['success'])?$_GET['success']:'';
+$query_error = isset($_GET['qerror'])?$_GET['qerror']:'';
 ?>
 <!doctype html>
 <html lang="en">
@@ -22,6 +28,18 @@ $pwd_error = isset($_GET['error'])?$_GET['error']:'';
       <div class="jumbotron">
     <h2 class="display-5">Registration Form</h2>
     <hr class="hrule" />
+    <?php if($success!=''){
+            echo '<div class="alert alert-success" role="alert">
+        Registration Successful! Please Login with those credentials</div>';
+    }
+    if($query_error!=''){
+      echo '<div class="alert alert-danger" role="alert">Query Error:'.$query_error.'</div>';
+    }
+    if($error!=''){
+      echo '<div class="alert alert-danger" role="alert">Error:'.$error.'</div>';
+    }
+    
+    ?>
     <div class="card">
       <div class="card-body">
         <p class="card-text">
@@ -76,7 +94,7 @@ $pwd_error = isset($_GET['error'])?$_GET['error']:'';
                       <div class="form-group">
                           <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                               <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-at"></i></div>
-                              <input type="text" name="email" class="form-control" id="email"
+                              <input type="email" name="email" class="form-control" id="email"
                                      placeholder="you@example.com" required autofocus>
                           </div>
                       </div>
@@ -126,7 +144,6 @@ $pwd_error = isset($_GET['error'])?$_GET['error']:'';
                   <div class="col-md-3">
                       <div class="form-control-feedback">
                               <span class="text-danger align-middle">
-                                  <?php if($pwd_error!=''){ echo '<i class="fa fa-close">'; echo $pwd_error;} ?></i>
                               </span>
                       </div>
                   </div>

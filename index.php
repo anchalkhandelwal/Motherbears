@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!doctype html>
 <html lang="en">
    <head>
@@ -13,7 +16,13 @@
       <link rel="stylesheet" type="text/css" href="static/css/commons.css">
    </head>
    <body class="dom-body">
-      <?php include('header.php')?>
+      <?php include('header.php'); ?>
+
+      <?php
+         if(isset($_SESSION['first_name'])){
+            echo '<div class="alert alert-primary" role="alert">Welcome back, '.$_SESSION["first_name"].'!<a class="btn btn-danger btn-sm float-right" href="signout.php" style="position:relative;top:-3px;">Logout</a></div>';
+         }
+      ?>
       <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
          <ol class="carousel-indicators">
             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>

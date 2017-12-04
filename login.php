@@ -1,7 +1,15 @@
+<?php 
+session_start();
+if(isset($_SESSION["first_name"])) {
+    header("Location: index.php");
+}
+$error = isset($_GET['error'])?$_GET['error']:'';
+?>
+
 <!doctype html>
 <html lang="en">
    <head>
-      <title>MotherBears | Register</title>
+      <title>MotherBears | Login</title>
       <!-- Required meta tags -->
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -19,10 +27,16 @@
       <div class="jumbotron">
     <h2 class="display-5">Login</h2>
     <hr class="hrule" />
+    <?php 
+    if($error!=''){
+      echo '<div class="alert alert-danger" role="alert">Error:'.$error.'</div>';
+    }
+    
+    ?>
     <div class="card">
       <div class="card-body">
         <p class="card-text">
-          <form class="form-horizontal" role="form" method="POST" action="/register">
+          <form class="form-horizontal" role="form" action="login-process.php" method="POST">
               <div class="row">
                   <div class="col-md-3 field-label-responsive">
                       <label for="email">E-Mail Address</label>
@@ -31,7 +45,7 @@
                       <div class="form-group">
                           <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                               <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-at"></i></div>
-                              <input type="text" name="email" class="form-control" id="email"
+                              <input type="email" name="email" class="form-control" id="email"
                                      placeholder="you@example.com" required autofocus>
                           </div>
                       </div>
@@ -60,7 +74,7 @@
                   <div class="col-md-3">
                       <div class="form-control-feedback">
                               <span class="text-danger align-middle">
-                                  <i class="fa fa-close"> Example Error Message</i>
+                                  <!-- Put e-mail validation error messages here -->
                               </span>
                       </div>
                   </div>
