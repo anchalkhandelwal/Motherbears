@@ -30,6 +30,20 @@ include('connection.php');
 		header("Location: register.php?normalerror=InValid%20Pincode");
 	}
 
+	//checking email exists
+	$query = "SELECT * FROM \"Users\" WHERE email='{$email}'";
+	// die($query);
+	$result = pg_query($conn, $query);
+
+	if(!$result) {}
+	else{
+		$numrows = pg_numrows($result);
+		if($numrows != 0){
+			header("Location: register.php?qerror=Email%20Exists");
+		}
+	}
+	//end of checking email exists
+
 	$query = "INSERT INTO \"Users\"(first_name,last_name,email,phone,password,address) VALUES('{$firstName}', '{$lastName}','{$email}', '{$phone}', '{$pass}', '{$address}')";
 	// die($query);
 	$result = pg_query($conn, $query);
