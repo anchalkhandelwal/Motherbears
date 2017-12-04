@@ -52,3 +52,9 @@ li >a:hover{
 	top: -16px;
 	left: 0px;
 }
+
+.carousel-caption {
+	color: #efefef;
+	background-color: #3d3e3f;
+	
+}
