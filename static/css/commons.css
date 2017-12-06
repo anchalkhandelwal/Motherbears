@@ -22,10 +22,13 @@ ul {
 	list-style-type: none;
 }
 
+footer li a {
+	left: -40px;
+}
+
 li a {
 	color: #efefef;
 	position: relative;
-	left: -40px;
 }
 
 li >a:hover{

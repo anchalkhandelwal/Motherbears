@@ -9,7 +9,7 @@
 }
 
 body {
-    color: white;
+    color: #000000;
     background-color: #fff;
     width: 100%;
     float: left;
@@ -155,4 +155,34 @@ div#footer-section a {
 /* Style the tab */
 div#tabs{
 	float: left;
+}
+
+.category_section {
+    float: left;
+    max-width: 250px;
+    text-align: center;
+	margin: 10px;
+}
+
+img.categoryicons {
+    max-width: 200px;
+    margin: 0 auto;
+    display: block;
+}
+footer {
+    float: left;
+    width: 100%;
+}
+
+.content-container {
+    float: left;
+    width: 100%;
+}
+
+span.category_name{
+    display: block;
+    background: lightgray;
+    opacity: 0.8;
+    margin-top: -27px;
+    font-size: 18px;
 }
