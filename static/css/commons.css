@@ -8,6 +8,16 @@
 	background-color: darkred;
 }
 
+.hrule-light {
+	height: 2px;
+	background-color: darkred;
+	width: 80%;
+	display:block;
+	margin: 0px auto;
+	margin-top: 25px;
+	margin-bottom: 25px;
+}
+
 .ordericons:hover {
 	opacity: 0.5;
 
@@ -55,6 +65,14 @@ li >a:hover{
 
 .carousel-caption {
 	color: #efefef;
-	background-color: #3d3e3f;
-	
+	background-color: #3d3e3f;	
+}
+
+.card-hover {
+	text-decoration: none;
+	color: #000000;
+}
+.card-hover:hover {
+	border: 1px solid darkred;
+	text-decoration: none;
 }
