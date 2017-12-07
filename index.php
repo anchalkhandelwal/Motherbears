@@ -22,6 +22,9 @@ session_start();
          if(isset($_SESSION['first_name'])){
             echo '<div class="alert alert-primary" role="alert">Welcome back, '.$_SESSION["first_name"].'!<a class="btn btn-danger btn-sm float-right" href="signout.php" style="position:relative;top:-3px;">Logout</a></div>';
          }
+         if(isset($_GET['error'])){
+          echo '<div class="alert alert-danger" role="alert">Error: '.$_GET["error"].'</div>';
+         }
       ?>
       <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
          <ol class="carousel-indicators">
@@ -80,7 +83,7 @@ session_start();
       <div class="card-body">
         <h4 class="card-title">Carryout</h4>
         <p class="card-text">Get your freshly baked pizza directly from store with no delivery costs</p>
-        <a href="#" ><img class="ordericons img-fluid" src="static/images/carryout.png" alt="carryout"></a>
+        <a href="order_step1.php?type=carryout" ><img class="ordericons img-fluid" src="static/images/carryout.png" alt="carryout"></a>
       </div>
     </div>
   </div>
@@ -89,7 +92,7 @@ session_start();
       <div class="card-body">
         <h4 class="card-title">Delivery</h4>
         <p class="card-text">Get our delicious pizza at your doorstep with minimal delivery charges</p>
-        <a href="#"><img class="ordericons img-fluid" src="static/images/delivery.png" alt="delivery"></a>
+        <a href="order_step1.php?type=delivery"><img class="ordericons img-fluid" src="static/images/delivery.png" alt="delivery"></a>
       </div>
     </div>
   </div>
