@@ -84,8 +84,8 @@ session_start();
 		if(isset($_GET['item_id'])){
 			array_push($_SESSION['item_id'], $_GET['item_id']);
 		}
-		if(isset($_POST['item_size'])){
-			array_push($_SESSION['item_size'], $_POST['item_size']);
+		if(isset($_GET['item_size'])){
+			array_push($_SESSION['item_size'], $_GET['item_size']);
 		}
 		
 		
