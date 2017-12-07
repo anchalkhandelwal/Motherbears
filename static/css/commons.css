@@ -76,3 +76,6 @@ li >a:hover{
 	border: 1px solid darkred;
 	text-decoration: none;
 }
+.nav {
+	color : #000000;
+}
