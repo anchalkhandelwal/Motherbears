@@ -9,7 +9,7 @@
 }
 
 body {
-    color: white;
+    color: #000000;
     background-color: #fff;
     width: 100%;
     float: left;
@@ -155,4 +155,85 @@ div#footer-section a {
 /* Style the tab */
 div#tabs{
 	float: left;
+}
+
+.category_section {
+    float: left;
+    max-width: 250px;
+    text-align: center;
+	margin: 10px;
+}
+
+img.categoryicons {
+    max-width: 200px;
+    margin: 0 auto;
+    display: block;
+}
+footer {
+    float: left;
+    width: 100%;
+}
+
+.content-container {
+    float: left;
+    width: 100%;
+}
+
+span.category_name{
+    display: block;
+    background: lightgray;
+    opacity: 0.8;
+    margin-top: -27px;
+    font-size: 18px;
+}
+
+.item_section {
+    width: 46%;
+    float: left;
+    margin: 1%;
+    border: 1px solid lightgray;
+    padding: 1%;
+}
+
+span.item_name {
+    float: left;
+    font-weight: bold;
+	width: 100%;
+}
+
+span.item_description {
+    float: left;
+    width: 70%;
+    margin-top: 10px;
+	padding-right: 15px;
+	min-height: 129px;
+}
+
+img.itemicons.img-fluid {
+    float: right;
+    width: 30%;
+}
+
+.item_section a.btn.btn-primary {
+    margin-top: 11px;
+    float: left;
+    width: 100%;
+	color: #fff;
+}
+
+.item_image {
+    float: left;
+    width: 70%;
+	padding-right: 15px;
+}
+.item_cost {
+    float: left;
+    margin-left: 10px;
+}
+select.item_size_selection {
+    float: left;
+}
+.item_size {
+    float: left;
+    width: 100%;
 }
