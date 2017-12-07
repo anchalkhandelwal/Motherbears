@@ -24,6 +24,7 @@ session_start();
   $( function() {
     $( "#tabs" ).tabs();
   } );
+  
   </script>
    </head>
 	
@@ -40,7 +41,9 @@ session_start();
 		  <ul>
 			<li><a href="#tabs-1">View All</a></li>
 			<li><a href="#tabs-2">Pizza</a></li>
-			<li><a href="#tabs-3">Aenean lacinia</a></li>
+			<li><a href="#tabs-3">Pasta</a></li>
+			<li><a href="#tabs-4">Drinks</a></li>
+			<li><a href="#tabs-5">Others</a></li>
 		  </ul>
 		  <div id="tabs-1">
 			<p> <?php include('view_all_menu.php'); ?></p>
@@ -51,13 +54,49 @@ session_start();
 				include('pizza_menu.php'); ?></p>
 		  </div>
 		  <div id="tabs-3">
-			<p>Mauris eleifend est et turpis. Duis id erat. Suspendisse potenti. Aliquam vulputate, pede vel vehicula accumsan, mi neque rutrum erat, eu congue orci lorem eget lorem. Vestibulum non ante. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce sodales. Quisque eu urna vel enim commodo pellentesque. Praesent eu risus hendrerit ligula tempus pretium. Curabitur lorem enim, pretium nec, feugiat nec, luctus a, lacus.</p>
-			<p>Duis cursus. Maecenas ligula eros, blandit nec, pharetra at, semper at, magna. Nullam ac lacus. Nulla facilisi. Praesent viverra justo vitae neque. Praesent blandit adipiscing velit. Suspendisse potenti. Donec mattis, pede vel pharetra blandit, magna ligula faucibus eros, id euismod lacus dolor eget odio. Nam scelerisque. Donec non libero sed nulla mattis commodo. Ut sagittis. Donec nisi lectus, feugiat porttitor, tempor ac, tempor vitae, pede. Aenean vehicula velit eu tellus interdum rutrum. Maecenas commodo. Pellentesque nec elit. Fusce in lacus. Vivamus a libero vitae lectus hendrerit hendrerit.</p>
+			<p><?php 
+				$category_id = 2;
+				include('pizza_menu.php'); ?></p></p>
+		  </div>
+		  <div id="tabs-4">
+			<p><?php 
+				$category_id = 3;
+				include('pizza_menu.php'); ?></p></p>
+		  </div>
+		  <div id="tabs-5">
+			<p><?php 
+				$category_id = 4;
+				include('pizza_menu.php'); ?></p></p>
 		  </div>
 			
 	</div>		
 	</div>
 		<?php include('footer.php'); ?>
-	
+		
+		<?php
+		 if (!array_key_exists('item_id', $_SESSION) || !is_array($_SESSION['item_id'])){
+				$_SESSION['item_id']=array();
+		 }
+		 if (!array_key_exists('item_size', $_SESSION) || !is_array($_SESSION['item_size'])){
+				$_SESSION['item_size']=array();
+		 }
+
+		if(isset($_GET['item_id'])){
+			array_push($_SESSION['item_id'], $_GET['item_id']);
+		}
+		if(isset($_POST['item_size'])){
+			array_push($_SESSION['item_size'], $_POST['item_size']);
+		}
+		
+		
+		?>
+		
+	<script>
+		$( '.item_size_selection' ).on('change', function() {
+			var str = this.value;
+			$(this).parent().find('.item_cost span').text(str);
+		});		
+		
+	</script>
 </body>
 </html>
