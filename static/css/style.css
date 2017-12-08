@@ -168,6 +168,7 @@ img.categoryicons {
     max-width: 200px;
     margin: 0 auto;
     display: block;
+	height: 200px;
 }
 footer {
     float: left;
@@ -212,6 +213,7 @@ span.item_description {
 img.itemicons.img-fluid {
     float: right;
     width: 30%;
+	height: 153px;
 }
 
 .item_section a.btn.btn-primary {
