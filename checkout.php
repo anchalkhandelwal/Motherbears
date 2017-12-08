@@ -59,8 +59,7 @@
 		      		</div>';
 		      	}
 		      	?>
-	      		<?php 
-	      		//$cart = array(3,10,30);  
+	      		<?php  
 	      		if($no_items == false) {
 					$query = 'SELECT * FROM "Menu" WHERE id IN ('.implode(",",$cart).')'; 
 					$rs = pg_query($conn, $query) or die("Cannot execute query: $query\n");
@@ -102,7 +101,7 @@
 		      					<p id="'.$cost_id.'">$'.$cost.'</p>
 		      				</div>
 		      				<div class="col-sm-1">
-		      					<button type="button" class="close btn_cross" aria-label="Close" data-menu-id="'.$item_id.'">
+		      					<button type="button" class="close btn_cross" aria-label="Close" data-cost="'.$cost.'" data-menu-id="'.$item_id.'">
 	  								<span aria-hidden="true">&times;</span>
 								</button>
 		      				</div>';
@@ -116,6 +115,7 @@
 				$_SESSION["tax"]= $tax;
 				$_SESSION["new_total"]= $new_total;
 				$_SESSION["quantity_array"]= $quantity_array;
+				$_SESSION["size"]= $size;
 		      	echo '</div>';
 	      		echo '<div class="row">
 		      		<div class="col-sm-6 ">
@@ -181,8 +181,6 @@
 	      	</div>
   		</div>
       </div>
-	  
-
       <?php include('footer.php') ?>
 </body>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -225,6 +223,25 @@ $('.quantity').on("change", function () {
           }
     });
 });
+$(".btn_cross").on("click", function() {
+	var id = parseInt(this.getAttribute("data-menu-id"));
+	var cost = parseInt(this.getAttribute("data-cost"));
+	$.ajax({
+  		 type: 'POST',
+         url: 'remove_item.php',
+         data: { item_id: id, cost: cost},
+         success: function(data){  
+            alert("Item removed from cart!");  
+            window.location.href = 'checkout.php';
+            window.open();
+          },
+          error: function(jqXHR, textStatus, errorThrown) {
+          	alert("error: " + textStatus);
+          	alert("error thrown: " + errorThrown);
+          	alert("error jqXHR: " + jqXHR.status);
+          }
+    });
+});
 $("#place_order_btn").on("click", function() {
 	var ins = $("#instructions").val();
 	$.ajax({
@@ -233,7 +250,7 @@ $("#place_order_btn").on("click", function() {
          data: { instructions:  ins},
          success: function(data){  
             alert("Order placed successfully!");  
-			window.location.href = "index.php";
+            alert(data);
           },
           error: function(jqXHR, textStatus, errorThrown) {
           	alert("error: " + textStatus);
@@ -241,7 +258,6 @@ $("#place_order_btn").on("click", function() {
           	alert("error jqXHR: " + jqXHR.status);
           }
     });
-	
 });
 </script>
 </html>

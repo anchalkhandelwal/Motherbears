@@ -26,6 +26,4 @@
 	$_SESSION["tax"] = $new_tax;
 	$_SESSION["new_total"] = $new_final_total;
 	$_SESSION["quantity_array"] = $quantity_array;
-
-
 ?>
