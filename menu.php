@@ -74,22 +74,26 @@ session_start();
 		<?php include('footer.php'); ?>
 		
 		<?php
-		 if (!array_key_exists('item_id', $_SESSION) || !is_array($_SESSION['item_id'])){
-				$_SESSION['item_id']=array();
+		 if (!array_key_exists('cart', $_SESSION) || !is_array($_SESSION['cart'])){
+				$_SESSION['cart']=array();
 		 }
-		 if (!array_key_exists('item_size', $_SESSION) || !is_array($_SESSION['item_size'])){
-				$_SESSION['item_size']=array();
+		 if (!array_key_exists('size', $_SESSION) || !is_array($_SESSION['size'])){
+				$_SESSION['size']=array();
 		 }
 
-		if(isset($_GET['item_id'])){
-			array_push($_SESSION['item_id'], $_GET['item_id']);
+		if(isset($_GET['cart'])){
+			array_push($_SESSION['cart'], $_GET['cart']);
 		}
-		if(isset($_GET['item_size'])){
-			array_push($_SESSION['item_size'], $_GET['item_size']);
+		
+		if(isset($_GET['size'])){
+			array_push($_SESSION['size'], $_GET['size']);
 		}
 		
 		
 		?>
+		
+	
+
 		
 	<script>
 		$( '.item_size_selection' ).on('change', function() {

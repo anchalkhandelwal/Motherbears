@@ -19,27 +19,30 @@
 		include 'connection.php';
 	  ?>
       <div class="container checkout">
-      	<h1 class="heading">My order</h1>
+      	<h1 class="heading">My order Details</h1>
   		<div class="order_info">
   			<?php
 				$user_email = $_SESSION["email"];
-				$cart = array(3,10,30);  
-				session_unset(); 
-				$_SESSION['cart'] = $cart;
+				//$cart = array();  
+				//session_unset(); 
+				//$_SESSION['cart'] = $cart;
 				$quantity_array = array();
-				$size = array("Small","Large","Medium"); 
-				$no_items = false;
+				//$size = array("Small"); 
+				$no_items = true;
+				//$cart = $_SESSION['cart']; 
   				if (isset($_SESSION['cart'])) {
-  					$cart = $_SESSION['cart'];  
+  					$cart = $_SESSION['cart'];
+					$size = $_SESSION['size'];					
   					$size_of_cart = sizeof($cart);
-					if($size_of_cart == 0) {
-						$no_items = true;
+					if($size_of_cart > 0) {
+						$no_items = false;
   					}
   				}
   				if($no_items == true) {
   					echo '<p class="no_items">You have no items in the cart!</p>';
   				}
   			?>
+			
       		<div class="row item_list">
       			<?php
       			if($no_items == false) {
@@ -57,7 +60,7 @@
 		      	}
 		      	?>
 	      		<?php 
-	      		$cart = array(3,10,30);  
+	      		//$cart = array(3,10,30);  
 	      		if($no_items == false) {
 					$query = 'SELECT * FROM "Menu" WHERE id IN ('.implode(",",$cart).')'; 
 					$rs = pg_query($conn, $query) or die("Cannot execute query: $query\n");
@@ -178,6 +181,8 @@
 	      	</div>
   		</div>
       </div>
+	  
+
       <?php include('footer.php') ?>
 </body>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -228,6 +233,7 @@ $("#place_order_btn").on("click", function() {
          data: { instructions:  ins},
          success: function(data){  
             alert("Order placed successfully!");  
+			window.location.href = "index.php";
           },
           error: function(jqXHR, textStatus, errorThrown) {
           	alert("error: " + textStatus);
@@ -235,6 +241,7 @@ $("#place_order_btn").on("click", function() {
           	alert("error jqXHR: " + jqXHR.status);
           }
     });
+	
 });
 </script>
 </html>

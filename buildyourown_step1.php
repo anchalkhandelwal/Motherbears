@@ -40,7 +40,7 @@ else {
       <?php include('header.php'); ?>
 
       <div class="jumbotron">
-         <h2 class="display-5">Build your own pizza <span style="float:right; color: #efefef;"><a class="btn btn-primary" id="continuecart" style="display:block;margin: 0px auto" role="button">Continue to Cart&nbsp;<i class="fa fa-arrow-circle-right"></i></a></span></h2>
+         <h2 class="display-5">Build your own pizza <span style="float:right; color: #efefef;"><a class="btn btn-primary" id="continuecart" style="display:block;margin: 0px auto" role="button" href="checkout.php">Continue to Cart&nbsp;<i class="fa fa-arrow-circle-right"></i></a></span></h2>
          <hr class="hrule" />
          <div class="row">
             <div class="col-sm-1"></div>

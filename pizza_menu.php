@@ -29,7 +29,7 @@ while ($row = pg_fetch_row($rs)) {
 			echo "<span>$cost_medium</span>";
 		echo "</div>";
 	echo "</div>";
-	echo "<div class='item_image'><a href='?item_id=$item_id&item_size=Medium' class='btn btn-primary'>Order Now</a></div>";
+	echo "<div class='item_image'><a href='?cart=$item_id&size=Medium' class='btn btn-primary'>Order Now</a></div>";
 	echo "</div>";
 }
 echo "</div>";

@@ -5,11 +5,11 @@
          </button>
          <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
-               <li class="nav-item">
+              <!-- <li class="nav-item">
                    <a href="#" class="btn btn-light">Order Now<span class="sr-only">(current)</span></a>
-               </li>
+               </li> -->
                <li class="nav-item">
-                   <a href="#"  class="btn btn-light">Menu<span class="sr-only">(current)</span></a>
+                   <a href="menu.php"  class="btn btn-light">Menu<span class="sr-only">(current)</span></a>
                </li>
                <li class="nav-item">
                    <a href="#"  class="btn btn-warning">Specials<span class="sr-only">(current)</span></a>
@@ -17,6 +17,10 @@
                <li class="nav-item">
                    <a href="#"  class="btn btn-light">About Us<span class="sr-only">(current)</span></a>
                </li>
+			   <li class="nav-item">
+                   <a href="checkout.php"  class="btn btn-light">Checkout<span class="sr-only">(current)</span></a>
+               </li>
+			  
             </ul>
          </div>
       </nav>
