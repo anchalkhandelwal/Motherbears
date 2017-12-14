@@ -14,6 +14,11 @@
 </head>
 <body class="dom-body">
       <?php include('header.php'); ?>
+      <?php
+			 if(isset($_SESSION['first_name'])){
+				echo '<div class="alert alert-primary" role="alert">Welcome back, '.$_SESSION["first_name"].'!<a class="btn btn-danger btn-sm float-right" href="signout.php" style="position:relative;top:-3px;">Logout</a></div>';
+			 }
+		?>
       <?php 
   		session_start();
 		include 'connection.php';
@@ -138,22 +143,6 @@
 		      					<p class="amount" id="tax_amount">$'.$tax.'</p>
 		      				</div>
 		      			</div>
-		      			<div class="row tax">
-		      				<div class="col-sm-4 left">
-		      					<p class="amount_label">Coupons - </p>
-		      				</div>
-		      				<div class="col-sm-4 center">
-		      					<div class="input-group">
-	  								<input type="text" class="form-control small_text" placeholder="Coupon Code">
-	  								<span class="input-group-btn">
-	        							<button class="btn btn-secondary small_button" type="button">Apply</button>
-	      							</span>
-								</div>
-		      				</div>
-		      				<div class="col-sm-4 right">
-		      					<p class="amount" id="coupon_amount">- $0.00</p>
-		      				</div>
-		      			</div>
 		      			<div class="row total">
 		      				<div class="col-sm-6 left">
 		      					<p class="amount_label" >Total - </p>
@@ -249,13 +238,18 @@ $("#place_order_btn").on("click", function() {
          url: 'place_order.php',
          data: { instructions:  ins},
          success: function(data){  
-            alert("Order placed successfully!");  
-            alert(data);
+         	alert(data); 
+         	if(data == "Order placed successfully!") {
+         		window.location.href = 'index.php';
+            	window.open();
+         	}
+             
           },
           error: function(jqXHR, textStatus, errorThrown) {
-          	alert("error: " + textStatus);
-          	alert("error thrown: " + errorThrown);
-          	alert("error jqXHR: " + jqXHR.status);
+          	console.log("error: " + textStatus);
+          	console.log("error thrown: " + errorThrown);
+          	console.log("error jqXHR: " + jqXHR.status);
+          	alert("Failed to place order");
           }
     });
 });

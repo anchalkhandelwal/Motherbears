@@ -27,10 +27,15 @@
 				$_SESSION["email"]= $row[3];
 				$_SESSION["phone"]= $row[4];
 				$_SESSION["address"]= $row[6];
+				if($_SESSION["user_id"] == 9) {
+					$_SESSION["is_admin"] = true;
+				}
 			}
-			header("Location: index.php");
-
+			if(isset($_SESSION["is_admin"])) {
+				header("Location: admin_dashboard.php");
+			} else {
+				header("Location: index.php");
+			}
 		}
 	}
-
 ?>
