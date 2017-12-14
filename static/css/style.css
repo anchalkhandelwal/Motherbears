@@ -239,3 +239,64 @@ select.item_size_selection {
     float: left;
     width: 100%;
 }
+.user_dashboard {
+    background: #fff;
+}
+.edit_user_details {
+    width: 50%;
+    margin: 0 auto;
+}
+
+.user_details {
+    max-width: 50%;
+    margin: 0 auto;
+}
+
+.order_details {
+    margin: 0 auto;
+    max-width: 50%;
+}
+.order_details table tr {
+    border: 1px solid;
+	border-collapse: collapse;
+}
+.order_details table td {
+    border: 1px solid;
+	border-collapse: collapse;
+	padding: 5px;
+}
+
+.order_details table th {
+    border: 1px solid;
+	border-collapse: collapse;
+	padding: 5px;
+}
+
+ul.user_profile_tabs{
+    float: left;
+    width: 200px;
+	background: none;
+    border: 0;
+	margin-top: 15px !important;
+}
+ul.user_profile_tabs li{
+    width: 100%;
+    margin-bottom: 10px;
+    border: 1px solid lightgray;
+}
+ul.user_profile_tabs li a{
+    width: 100%;
+}
+
+.ui-tabs .ui-tabs-nav li.ui-tabs-active{
+	margin-bottom:0;
+	border: 1px solid darkred !important;
+    background: darkred !important;
+}
+
+.user_dashboard #tabs{
+    width: 85%;
+    margin: 0 auto;
+    border: 0;
+	float: none;
+}
