@@ -19,7 +19,7 @@
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 30%;
+    width: 40%;
 }
 
 /* The Close Button */
@@ -61,4 +61,16 @@
 
 .orderdetails {
     margin-top: 20px;
+}
+
+.table thead th {
+    vertical-align: top !important;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.table {
+    margin-top: 2%;
 }

@@ -14,15 +14,15 @@
 </head>
 <body class="dom-body">
       <?php include('header.php'); ?>
+      <?php 
+  		session_start();
+		include 'connection.php';
+	  ?>
       <?php
 			 if(isset($_SESSION['first_name'])){
 				echo '<div class="alert alert-primary" role="alert">Welcome back, '.$_SESSION["first_name"].'!<a class="btn btn-danger btn-sm float-right" href="signout.php" style="position:relative;top:-3px;">Logout</a></div>';
 			 }
 		?>
-      <?php 
-  		session_start();
-		include 'connection.php';
-	  ?>
       <div class="container checkout">
       	<h1 class="heading">My order Details</h1>
   		<div class="order_info">
@@ -174,6 +174,10 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript">
+$(document).ready(function () {
+	$("#viewcart_page").removeClass("btn-light");
+   	$("#viewcart_page").addClass( "btn-warning");
+});
 $('.quantity').on("change", function () {
 	var cost = parseFloat(this.getAttribute("data-cost"));
 	var prev_quantity = parseInt(this.getAttribute("data-quantity"));
@@ -239,7 +243,7 @@ $("#place_order_btn").on("click", function() {
          data: { instructions:  ins},
          success: function(data){  
          	alert(data); 
-         	if(data == "Order placed successfully!") {
+         	if(data.includes("Order placed successfully!")) {
          		window.location.href = 'index.php';
             	window.open();
          	}

@@ -9,16 +9,16 @@
                    <a href="#" class="btn btn-light">Order Now<span class="sr-only">(current)</span></a>
                </li> -->
                <li class="nav-item">
-                   <a href="menu.php"  class="btn btn-light">Menu<span class="sr-only">(current)</span></a>
+                   <a id="menu_page" href="menu.php"  class="btn btn-light">Menu<span class="sr-only">(current)</span></a>
                </li>
                <li class="nav-item">
-                   <a href="#"  class="btn btn-warning">Specials<span class="sr-only">(current)</span></a>
+                   <a href="#"  class="btn btn-light">Specials<span class="sr-only">(current)</span></a>
                </li>
                <li class="nav-item">
                    <a href="#"  class="btn btn-light">About Us<span class="sr-only">(current)</span></a>
                </li>
-			   <li class="nav-item">
-                   <a href="checkout.php"  class="btn btn-light">Checkout<span class="sr-only">(current)</span></a>
+			         <li class="nav-item">
+                   <a id="viewcart_page" href="checkout.php"  class="btn btn-light">View Cart<span class="sr-only">(current)</span></a>
                </li>
 			  
             </ul>

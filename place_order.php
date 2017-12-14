@@ -8,6 +8,7 @@
 	$timestamp = date('Y-m-d G:i:s');
 	$quantity_array = isset($_SESSION['quantity_array'])?$_SESSION['quantity_array']:'';
 	$cart = isset($_SESSION['cart'])?$_SESSION['cart']:'';
+	$user_id = isset($_SESSION['user_id'])?$_SESSION['user_id']:'';
 	$size = isset($_SESSION['size'])?$_SESSION['size']:'';
 	$subtotal_amount = isset($_SESSION['subtotal_amount'])?$_SESSION['subtotal_amount']:'';
 	$new_tax = isset($_SESSION['new_tax'])?$_SESSION['new_tax']:'';

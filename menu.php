@@ -96,6 +96,10 @@ session_start();
 
 		
 	<script>
+	$(document).ready(function () {
+		$("#menu_page").removeClass("btn-light");
+	   	$("#menu_page").addClass( "btn-warning");
+	});
 		$( '.item_size_selection' ).on('change', function() {
 			var str = this.value;
 			$(this).parent().find('.item_cost span').text(str);

@@ -1,7 +1,7 @@
 </!DOCTYPE html>
 <html>
 <head>
-	<title>Checkout</title>
+	<title>Admin Dashboard</title>
 	<meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <!-- Bootstrap CSS -->
@@ -13,12 +13,7 @@
       <link rel="stylesheet" type="text/css" href="static/css/admin_dashboard.css">
 </head>
 <body class="dom-body">
-      <?php include('header.php'); ?>
-      <?php
-       if(isset($_SESSION['first_name'])){
-        echo '<div class="alert alert-primary" role="alert">Welcome back, '.$_SESSION["first_name"].'!<a class="btn btn-danger btn-sm float-right" href="signout.php" style="position:relative;top:-3px;">Logout</a></div>';
-       }
-    ?>
+      <?php include('header-admin.php'); ?>
       <?php 
   		  session_start();
 		    include 'connection.php';
@@ -29,11 +24,10 @@
         if(isset($_SESSION["is_admin"]) && $_SESSION["is_admin"]) {
           echo '<h1 class="allorders heading">Admin - All Orders</h1>
                 <div class="table">
-                <table>
+                <table class="table">
                   <thead>
                     <tr>
-                      <th>Order ID</th>
-                      <th>User ID</th>
+                      <th>Order Number</th>
                       <th>Bill Amount</th>
                       <th>Order Type</th>
                       <th>Order Time</th>
@@ -52,7 +46,6 @@
           $rs = pg_query($conn, $query) or die("Cannot execute query: $query\n");
           while ($row = pg_fetch_row($rs)) {
             $order_id = $row[0];
-            $user_id = $row[1];
             $bill_amount = $row[2];
             $order_status = $row[3];
              if($order_status == 1) {
@@ -88,9 +81,8 @@
             }
             $address = $row[9];
             echo  '<tr>
-              <td>'.$order_id.'</td>
-              <td>'.$user_id.'</td>
-              <td>'.$bill_amount.'</td>
+              <td class="bold">'.$order_id.'</td>
+              <td>$'.$bill_amount.'</td>
               <td>'.$order_type_string.'</td>
               <td>'.$order_time.'</td>
               <td>'.$instructions.'</td>
@@ -120,23 +112,6 @@
         <div class="modal-content">
           <span class="close close_btn">&times;</span>
           <div class="orderdetails">
-            <div class="row">
-              <div class="col-sm-10">
-                <p class="item_name">Item</p>
-              </div>
-              <div class="col-sm-2">
-                <p class="quantity">Quantity</p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-sm-10">
-                <p class="item_name">Veggie Delight</p>
-                <p class="item_desc">Has all the veggies - Medium</p>
-              </div>
-              <div class="col-sm-2">
-                <p class="quantity">1 Pizza</p>
-              </div>
-            </div>
           </div>
         </div>
       </div>
@@ -185,8 +160,9 @@ $('.view_btn').on("click", function () {
        type: 'POST',
          url: 'show_order_details.php',
          data: { order_id: order_id},
-         success: function(data){  
-            alert(data);  
+         success: function(data){
+            $(".orderdetails").append(data); 
+             modal.style.display = "block";
           },
           error: function(jqXHR, textStatus, errorThrown) {
             alert("error: " + textStatus);
@@ -194,12 +170,12 @@ $('.view_btn').on("click", function () {
             alert("error jqXHR: " + jqXHR.status);
           }
     });
-  modal.style.display = "block";
 });
 var span = document.getElementsByClassName("close")[0];
 span.onclick = function() {
   var modal = document.getElementById('myModal');
   modal.style.display = "none";
+  $(".orderdetails").empty();
 }
 
 // When the user clicks anywhere outside of the modal, close it
@@ -207,6 +183,7 @@ window.onclick = function(event) {
     var modal = document.getElementById('myModal');
     if (event.target == modal) {
         modal.style.display = "none";
+        $(".orderdetails").empty();
     }
 }
 </script>
