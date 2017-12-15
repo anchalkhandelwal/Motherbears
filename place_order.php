@@ -53,16 +53,17 @@
 			$index = array_search('$item_id', $quantity_array);
 			$i = 0;
 			foreach($cart as $item) {
-			    if($item != $ite_id) {
+			    if($item != $item_id) {
 			    	break;
 			    }
 			    $i = $i + 1;
 			}
 			$q = $quantity_array[$i];
 			$s = $size[$i];
+			echo "i:".$i;
 			$cost_total = $cost * $q;
 			$query = "INSERT INTO \"OrderDetails\"(order_id, menu_id, item_description, quantity, price, size) VALUES('{$order_id}', '{$item_id}', '{$item_description}', '{$q}', '{$cost_total}', '{$s}')";
-
+			echo $q."fdfd";
 			$result = pg_query($conn, $query) or die("Cannot execute query: $query\n");
 
 			if(!$result){
