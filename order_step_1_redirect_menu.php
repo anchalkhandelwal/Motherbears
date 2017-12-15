@@ -37,7 +37,7 @@ session_start();
             <div class="card-body">
                <h4 class="card-title">Address</h4>
                <p class="card-text">Please provide us an address to deliver your pizza</p>
-               <form class="form-horizontal" role="form" action="set_delivery_address.php" method="POST">
+               <form class="form-horizontal" role="form" action="set_delivery_address_and_redirect_to_menu.php" method="POST">
                   <div class="row">
                      <div class="col-md-3 field-label-responsive">
                         <label for="address">Home Address</label>
@@ -101,7 +101,7 @@ session_start();
   if(isset($_SESSION['first_name'])){
     echo '<hr class="hrule-light" />
       <div class="row">
-        <a class="btn btn-primary" href="set_delivery_address.php?address=own" style="display:block;margin: 0px auto" role="button">Select my Home Address&nbsp;<i class="fa fa-arrow-circle-right"></i></a>
+        <a class="btn btn-primary" href="set_delivery_address_and_redirect_to_menu.php?address=own" style="display:block;margin: 0px auto" role="button">Select my Home Address&nbsp;<i class="fa fa-arrow-circle-right"></i></a>
       </div>';
   }
     echo '</div></div>';
@@ -115,7 +115,7 @@ session_start();
       <div class="row">
       <div class="col-sm-2"></div>
   <div class="col-sm-4">
-    <a href="select_store_id.php?location=1">
+    <a href="select_store_id_and_redirect_to_menu.php?location=1">
     <div class="card card-hover">
       <div class="card-body">
         <h4 class="card-title">Mother Bear’s Pizza Campus</h4>
@@ -127,7 +127,7 @@ session_start();
     </a>
   </div>
   <div class="col-sm-4">
-    <a href="select_store_id.php?location=2">
+    <a href="select_store_id_and_redirect_to_menu.php?location=2">
     <div class="card card-hover">
       <div class="card-body">
         <h4 class="card-title">Mother Bear\'s Pizza West</h4>

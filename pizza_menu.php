@@ -29,7 +29,11 @@ while ($row = pg_fetch_row($rs)) {
 			echo "<span>$cost_medium</span>";
 		echo "</div>";
 	echo "</div>";
-	echo "<div class='item_image'><a href='?cart=$item_id&size=Medium' class='btn btn-primary'>Order Now</a></div>";
+	if (isset($_SESSION['user_id'])) {
+		echo "<div class='item_image'><a href='?cart=$item_id&size=Medium' class='btn btn-primary'>Order Now</a></div>";
+	} else {
+		echo "<div class='item_image sign_in_to_order'>Sign In To Order</div>";
+	}
 	echo "</div>";
 }
 echo "</div>";

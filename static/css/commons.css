@@ -81,3 +81,7 @@ li >a:hover{
 .nav {
 	color : #000000;
 }
+
+.sign_in_to_order {
+	font-style: italic;
+}

@@ -34,7 +34,7 @@
 			if(isset($_SESSION["is_admin"])) {
 				header("Location: admin_dashboard.php");
 			} else {
-				header("Location: index.php");
+				header("Location: menu.php");
 			}
 		}
 	}

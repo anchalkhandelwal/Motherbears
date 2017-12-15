@@ -5,6 +5,9 @@
 	$errors = 0;
 	$instructions = isset($_POST['instructions'])?$_POST['instructions']:'';
 	$user_id = isset($_SESSION['user_id'])?$_SESSION['user_id']:'';
+	$store_id = isset($_SESSION['store_id'])?$_SESSION['store_id']:'';
+	$order_type_selected = isset($_SESSION['order_type_selected'])?$_SESSION['order_type_selected']:'';
+	$address = isset($_SESSION['order_address'])?$_SESSION['order_address']:'';
 	$timestamp = date('Y-m-d G:i:s');
 	$quantity_array = isset($_SESSION['quantity_array'])?$_SESSION['quantity_array']:'';
 	$cart = isset($_SESSION['cart'])?$_SESSION['cart']:'';
@@ -13,8 +16,7 @@
 	$subtotal_amount = isset($_SESSION['subtotal_amount'])?$_SESSION['subtotal_amount']:'';
 	$new_tax = isset($_SESSION['new_tax'])?$_SESSION['new_tax']:'';
 	$new_final_total = isset($_SESSION['new_total'])?$_SESSION['new_total']:'';
-	
-	$query = "INSERT INTO \"Orders\"(user_id,bill_amount,order_status,order_type,order_time,instructions,payment,store_id,address) VALUES('{$user_id}', '{$new_final_total}',1, 1, '{$timestamp}', '{$instructions}', 1, 1, '3230 E John Hinkle Pl') RETURNING id";
+	$query = "INSERT INTO \"Orders\"(user_id,bill_amount,order_status,order_type,order_time,instructions,payment,store_id,address) VALUES('{$user_id}', '{$new_final_total}',1, $order_type_selected, '{$timestamp}', '{$instructions}', 1, $store_id, '$address') RETURNING id";
 
 	$result = pg_query($conn, $query);
 
@@ -59,7 +61,7 @@
 			$q = $quantity_array[$i];
 			$s = $size[$i];
 			$cost_total = $cost * $q;
-			$query = "INSERT INTO \"OrderDetails\"(order_id, menu_id, item_description, quantity, price, size) VALUES('{$order_id}', '{$item_id}', '{$item_description}', '1', '10.75', '{$s}')";
+			$query = "INSERT INTO \"OrderDetails\"(order_id, menu_id, item_description, quantity, price, size) VALUES('{$order_id}', '{$item_id}', '{$item_description}', '{$q}', '{$cost_total}', '{$s}')";
 
 			$result = pg_query($conn, $query) or die("Cannot execute query: $query\n");
 
@@ -77,6 +79,9 @@
 			unset($_SESSION['subtotal_amount']);
 			unset($_SESSION['new_tax']);
 			unset($_SESSION['new_total']);
+			unset($_SESSION['order_address']);
+			unset($_SESSION['store_id']);
+			unset($_SESSION['order_type_selected']);
 			echo "Order placed successfully!";
 		}
 		

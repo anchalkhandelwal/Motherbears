@@ -83,7 +83,7 @@ session_start();
       <div class="card-body">
         <h4 class="card-title">Carryout</h4>
         <p class="card-text">Get your freshly baked pizza directly from store with no delivery costs</p>
-        <a href="order_step1.php?type=carryout" ><img class="ordericons img-fluid" src="static/images/carryout.png" alt="carryout"></a>
+        <a href="order_step_1_redirect_menu.php?type=carryout" ><img class="ordericons img-fluid" src="static/images/carryout.png" alt="carryout"></a>
       </div>
     </div>
   </div>
@@ -92,7 +92,7 @@ session_start();
       <div class="card-body">
         <h4 class="card-title">Delivery</h4>
         <p class="card-text">Get our delicious pizza at your doorstep with minimal delivery charges</p>
-        <a href="order_step1.php?type=delivery"><img class="ordericons img-fluid" src="static/images/delivery.png" alt="delivery"></a>
+        <a href="order_step_1_redirect_menu.php?type=delivery"><img class="ordericons img-fluid" src="static/images/delivery.png" alt="delivery"></a>
       </div>
     </div>
   </div>
