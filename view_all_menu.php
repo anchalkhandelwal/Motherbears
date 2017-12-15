@@ -11,7 +11,7 @@ while ($row = pg_fetch_row($rs)) {
 	$category_name = $row[1];
 	$count++;
 	echo "<div class='category_section'>";
-	echo "<a href ='#tabs-".$count."'>";
+	echo "<a class='menu_cate' href ='#tabs-".$count."'>";
 	if($category_name == "Pizza"){
 		echo "<img class='categoryicons img-fluid' src='static/images/category/pizza.jpg' alt='pizza'>";
 	}

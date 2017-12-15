@@ -18,22 +18,28 @@ while ($row = pg_fetch_row($rs)) {
 	echo "<span class='item_name'>$item_name"."</span>";
 	echo "<span class='item_description'>$item_description"."</span>";
 	echo "<img class='itemicons img-fluid' src='static/images/item/$item_photo' alt='$item_name'>";
+	echo "<form action='' method='get'>";
 	echo "<div class='item_size'>";
-		echo "<select name='item_size' class='item_size_selection'>";
-			echo "<option value='$cost_small'>Small</option>";
-			echo "<option value='$cost_medium' selected='selected'>Medium</option>";
-			echo "<option value='$cost_large'>Large</option>";
+		echo "<select name='size' class='item_size_selection'>";
+			echo "<option value='Small'>Small</option>";
+			echo "<option value='Medium'>Medium</option>";
+			echo "<option value='Large'>Large</option>";
 		echo "</select>";
-		echo "<div class='item_cost'>";
+		echo "<input type='hidden' name='cart' value='$item_id'>";
+		/*echo "<div class='item_cost'>";
 			echo "$";
 			echo "<span>$cost_medium</span>";
-		echo "</div>";
+		echo "</div>";*/
 	echo "</div>";
 	if (isset($_SESSION['user_id'])) {
-		echo "<div class='item_image'><a href='?cart=$item_id&size=Medium' class='btn btn-primary'>Order Now</a></div>";
+		echo "<div class='item_image'>";
+			echo "<input type='submit' value='Order Now'>";
+		echo "</div>";
+		//<a href='?cart=$item_id&size=Medium' class='btn btn-primary'>Order Now</a></div>";
 	} else {
 		echo "<div class='item_image sign_in_to_order'>Sign In To Order</div>";
 	}
+	echo "</form>";
 	echo "</div>";
 }
 echo "</div>";

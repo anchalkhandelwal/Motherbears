@@ -100,10 +100,13 @@ session_start();
 		$("#menu_page").removeClass("btn-light");
 	   	$("#menu_page").addClass( "btn-warning");
 	});
-		$( '.item_size_selection' ).on('change', function() {
+	$('.menu_cate').click(function(){
+		location.reload();
+	});
+		/*$( '.item_size_selection' ).on('change', function() {
 			var str = this.value;
 			$(this).parent().find('.item_cost span').text(str);
-		});		
+		});	*/	
 		
 	</script>
 </body>
