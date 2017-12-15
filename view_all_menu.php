@@ -30,6 +30,9 @@ while ($row = pg_fetch_row($rs)) {
 	else if($category_name == "Munchies"){
 		echo "<img class='categoryicons img-fluid' src='static/images/category/munchies.jpg' alt='munchies'>";
 	}
+	else if($category_name == "Build your own pizza"){
+		echo "</a><a href='buildyourown_step1.php'><img class='categoryicons img-fluid' src='static/images/category/buildyourown.png' alt='munchies'>";
+	}
 	else if($category_name == "Salads"){
 		echo "<img class='categoryicons img-fluid' src='static/images/category/salad.jpg' alt='salad'>";
 	}

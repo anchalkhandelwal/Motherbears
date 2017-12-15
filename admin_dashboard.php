@@ -20,11 +20,10 @@
 	     ?>
 
       <?php
-        echo '<div class="container">';
+        echo '<div class="container-fluid">';
         if(isset($_SESSION["is_admin"]) && $_SESSION["is_admin"]) {
           echo '<h1 class="allorders heading">Admin - All Orders</h1>
-                <div class="table">
-                <table class="table">
+                <table class="table table-responsive table-bordered table-hover" style="background-color: #ffffff;">
                   <thead>
                     <tr>
                       <th>Order Number</th>
@@ -101,11 +100,10 @@
               <td><button class="view_btn btn btn-primary" data-order-id='.$order_id.' type="button">View</button></td>
             </tr>';
           }
-          echo '</div>';
+          echo '</tbody></table></div>';
         } else {
           echo "You don't have permission to access this page.";
         }
-        echo '</div>';
       ?>
       <div id="myModal" class="modal">
         <!-- Modal content -->
